@@ -810,7 +810,7 @@ class AbstractGeneratorTest extends TestCase
             $r->invokeArgs($media, [1, '', 'Could not connect to X', 'the command']);
             $this->fail('1 status means failure');
         } catch (\RuntimeException $e) {
-            $this->anything('1 status means failure');
+            $this->assertEquals(1, $e->getCode(), 'Execption thrown by checkProcessStatus should pass on the error code');
         }
     }
 
